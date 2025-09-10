@@ -4,7 +4,7 @@ interface Borrowable {
   isAvailable: boolean;
 }
 
-abstract class LibraryItem implements Borrowable {
+abstract class LibraryObject implements Borrowable {
   protected title: string;
   protected itemId: string;
   protected available: boolean = true;
@@ -42,7 +42,7 @@ abstract class LibraryItem implements Borrowable {
   }
 }
 
-class Book extends LibraryItem {
+class Book extends LibraryObject {
   private author: string;
 
   constructor(title: string, itemId: string, available: boolean, author: string) {
@@ -55,7 +55,7 @@ class Book extends LibraryItem {
   }
 }
 
-class Magazine extends LibraryItem {
+class Magazine extends LibraryObject {
   private issueDate: string;
 
   constructor(title: string, itemId: string, available: boolean, issueDate: string) {
@@ -68,7 +68,7 @@ class Magazine extends LibraryItem {
   }
 }
 
-class EBook extends LibraryItem {
+class EBooks extends LibraryObject {
   private filesizeMb: number;
   private format: string;
 
@@ -83,7 +83,7 @@ class EBook extends LibraryItem {
   }
 }
 
-class AudioBook extends LibraryItem {
+class SoundBook extends LibraryObject {
   private durationMinutes: number;
   private narrator: string;
 
@@ -98,7 +98,7 @@ class AudioBook extends LibraryItem {
   }
 }
 
-class Technology extends LibraryItem {
+class TechnologyEquipment extends LibraryObject {
   private deviceType: string;
   private brand: string;
 
@@ -113,10 +113,10 @@ class Technology extends LibraryItem {
   }
 }
 
-class LibraryMember {
+class LibraryMembers {
   private memberName: string;
   private memberId: string;
-  private borrowedItems: LibraryItem[];
+  private borrowedItems: LibraryObject[];
 
   constructor(memberName: string, memberId: string) {
     this.memberName = memberName;
@@ -128,7 +128,7 @@ class LibraryMember {
     return this.memberName;
   }
 
-  borrowItem(item: LibraryItem): string {
+  borrowItem(item: LibraryObject): string {
     const message = item.borrow(this.memberName);
     if (message.includes("borrowed")) {
       this.borrowedItems.push(item);
@@ -152,27 +152,27 @@ class LibraryMember {
 }
 
 class Library {
-  private items: LibraryItem[];
-  private members: LibraryMember[];
+  private items: LibraryObject[];
+  private members: LibraryMembers[];
 
   constructor() {
     this.items = [];
     this.members = [];
   }
 
-  addItem(item: LibraryItem): void {
+  addItem(item: LibraryObject): void {
     this.items.push(item);
   }
 
-  addMember(member: LibraryMember): void {
+  addMember(member: LibraryMembers): void {
     this.members.push(member);
   }
 
-  findItemById(itemId: string): LibraryItem | undefined {
+  findItemById(itemId: string): LibraryObject | undefined {
     return this.items.find((item) => item["itemId"] === itemId);
   }
 
-  findMemberById(memberId: string): LibraryMember | undefined {
+  findMemberById(memberId: string): LibraryMembers | undefined {
     return this.members.find((member) => member["memberId"] === memberId);
   }
 
@@ -202,9 +202,9 @@ const myLibrary = new Library();
 
 const book1 = new Book("OOP Basics", "B001", true, "Kin Dev");
 const mag1 = new Magazine("Tech Weekly", "M001", true, "2025-09-10");
-const ebook1 = new EBook("Learn TypeScript", "E001", true, 5, "PDF");
-const audio1 = new AudioBook("History of AI", "A001", true, 120, "John Doe");
-const tech1 = new Technology("Arduino Kit", "T001", true, "Electronics", "Arduino");
+const ebook1 = new EBooks("Learn TypeScript", "E001", true, 5, "PDF");
+const audio1 = new SoundBook("History of AI", "A001", true, 120, "John Doe");
+const tech1 = new TechnologyEquipment("Arduino Kit", "T001", true, "Electronics", "Arduino");
 
 myLibrary.addItem(book1);
 myLibrary.addItem(mag1);
@@ -212,8 +212,8 @@ myLibrary.addItem(ebook1);
 myLibrary.addItem(audio1);
 myLibrary.addItem(tech1);
 
-const member1 = new LibraryMember("Alice", "M1001");
-const member2 = new LibraryMember("Bob", "M1002");
+const member1 = new LibraryMembers("Alice", "M1001");
+const member2 = new LibraryMembers("Bob", "M1002");
 
 myLibrary.addMember(member1);
 myLibrary.addMember(member2);
