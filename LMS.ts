@@ -7,7 +7,7 @@ interface Borrowable {
 abstract class LibraryItem implements Borrowable {
   protected title: string;
   protected itemId: string;
-  protected available: boolean;
+  protected available: boolean = true;
   isAvailable: boolean;
 
   constructor(title: string, itemId: string, available: boolean) {
@@ -33,7 +33,7 @@ abstract class LibraryItem implements Borrowable {
       return `Item ${this.title} is not available.`;
     }
     this.available = false;
-    return `${memberName} borrowed ${this.title}`;
+    return `${this.title} borrowed by ${memberName} `;
   }
 
   returnItem(): string {
