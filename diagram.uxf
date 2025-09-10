@@ -1,1 +1,20 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level></diagram>
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>170</x><y>10</y><w>210</w><h>100</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Borrowble
+--
++borrow(memberName:string):string
++returnItem():strin
++isAvaliable:boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>10</y><w>320</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Abstract&gt;&gt;
+LibraryItem
+--
+-title: string
+-itemId: string
+-avaliable: boolean
+--
++constructor(title:string,itemId:string,avaliable:boolean)
++&lt;&lt;getter&gt;&gt;title():string
++&lt;&lt;setter&gt;&gt;avaliable(avaliable:boolean):void
++&lt;&lt;abstract&gt;&gt;getDetail
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>210</y><w>210</w><h>100</h></coordinates><panel_attributes>&lt;&lt;Abstract&gt;&gt;
+LibraryItem
+--
+c</panel_attributes><additional_attributes></additional_attributes></element></diagram>
