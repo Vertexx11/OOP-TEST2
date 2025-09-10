@@ -198,7 +198,7 @@ class Library {
   }
 }
 
-const myLibrary = new Library();
+const myLibrary = new Library();        
 
 const book1 = new Book("OOP Basics", "B001", true, "Kin Dev");
 const mag1 = new Magazine("Tech Weekly", "M001", true, "2025-09-10");
